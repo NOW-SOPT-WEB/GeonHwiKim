@@ -88,19 +88,19 @@ nav li a:hover {
 
 
 .banner-container {
-    width: 92%; /* 배너 컨테이너의 너비 */
-    overflow: hidden; /* 컨테이너 밖의 이미지 숨기기 */
+    width: 92%; 
+    overflow: hidden; /
   }
   
   .banner {
-    display: flex; /* 이미지들을 가로로 나열 */
-    width: calc(20% * 10); /* 각 이미지의 너비를 100%로 하여 총 10개 이미지 너비 합산 */
-    animation: slide 20s linear infinite; /* 무한 슬라이드 애니메이션 */
+    display: flex; 
+    width: calc(20% * 10); 
+    animation: slide 20s linear infinite; 
   }
   
   .banner img {
-    width: 10%; /* 각 이미지가 전체 컨테이너의 10% 너비를 차지하도록 설정 */
-    flex-shrink: 0; /* 이미지가 축소되지 않도록 설정 */
+    width: 10%; 
+    flex-shrink: 0; 
   }
   
   @keyframes slide {
@@ -108,7 +108,7 @@ nav li a:hover {
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%); /* 처음 5개 이미지가 지나간 후, 같은 이미지들이 다시 시작되도록 설정 */
+      transform: translateX(-50%); 
     }
   }
 
@@ -155,31 +155,28 @@ footer ul {
     list-style-type: none;
 }
 
-/* 기본 이미지 스타일 */
+
 img {
     width: 260px;
     height: 260px;
     margin: 5px; 
-    transition: transform 0.5s ease; /* 부드러운 변화를 위한 설정 */
+    transition: transform 0.5s ease; 
 }
   
-  /* 마우스 호버 시 적용될 애니메이션 */
 img:hover {
     animation: pulse 1s infinite alternate ease-in-out;
 }
   
-  /* @keyframes를 사용한 애니메이션 정의 */
   @keyframes pulse {
     0% {
-      transform: scale(1); /* 애니메이션 시작 시 이미지 원래 크기 */
+      transform: scale(1); 
     }
     100% {
-      transform: scale(1.1); /* 애니메이션 종료 시 이미지가 커지는 크기 */
+      transform: scale(1.1);
     }
   }
 
 
-/* 뷰포트 너비에 따른 스타일 조정 */
 @media (max-width: 1170px) {
     img {
         gap: 30px;
@@ -197,16 +194,9 @@ img:hover {
       }
     }
   
-  
-  /* 섹션과 카테고리 제목이 다른 요소에 가려지지 않도록 조정 */
-  section {
-    margin-top: 70px; /* 헤더 높이만큼 여백 조정 */
-  }
-
-/* 타겟이 되는 h2에 상단 여백 추가 */
 :target {
-  padding-top: 100px; /* header의 높이만큼 여백 추가 */
-  margin-top: -70px; /* 동일한 크기만큼 마진을 음수로 설정하여 요소의 위치 조정 */
+  padding-top: 100px;
+  margin-top: -70px; 
 }
 
   
