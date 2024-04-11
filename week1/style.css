@@ -9,6 +9,7 @@
     position: fixed;
     width: 100%;
     height: 10%;
+    z-index: 1;
 }
 
 .fa-house, .fa-bars {
@@ -40,22 +41,20 @@
 .nav-section__ul {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     gap: 25px;
     padding: 12px;
     border-radius: 10px;
-    width: 100px;
+    width: 80px;
     height: 140px;
-    margin-left: 4px;
     background-color: #CDF0EA;
 }
-
-
 
 .nav-section__ul li {
     list-style-type: none;
     list-style: none;
+    background-color: white;
 }
 
 .nav-section__ul li a:hover {
@@ -68,27 +67,26 @@
     color: black;
 }
 
-
 main {
   margin-left: 200px;
   padding-top: 8%;
 }
 
 
-.banner-container {
-    width: 92%; 
-    overflow: hidden; /
+.banner-section {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 16rem;
   }
   
-  .banner {
-    display: flex; 
-    width: calc(20% * 10); 
+  .banner-section__container {
+    display: flex;
+    flex-wrap: nowrap;
+    position: absolute; 
+    width: max-content; 
     animation: slide 20s linear infinite; 
-  }
-  
-  .banner img {
-    width: 10%; 
-    flex-shrink: 0; 
   }
   
   @keyframes slide {
