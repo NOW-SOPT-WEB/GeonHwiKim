@@ -1,7 +1,7 @@
 /* reset css */
 @import url('./reset.css');
 
-.header {
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,11 +15,6 @@
     font-size: 50px;
 }
 
-main {
-  margin-left: 200px;
-  padding-top: 8%;
-}
-
 nav {
     display: flex;
     flex-direction: column;
@@ -28,7 +23,7 @@ nav {
     position: fixed;
 }
 
-.div {
+.nav__container {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -39,11 +34,11 @@ nav {
     background-color: #98DDCA;
 }
 
-.div h2 {
+.nav__container h2 {
     text-align: center;
 }
 
-.navdiv {
+.nav__wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -57,16 +52,16 @@ nav {
     background-color: #CDF0EA;
 }
 
-.navdiv {
+.nav__wrapper {
     line-height: 0.1em;
 }
 
-.navdiv li {
+.nav__wrapper li {
     list-style-type: none;
     list-style: none;
 }
 
-.navdiv li a {
+.nav__wrapper li a {
     text-decoration: none;
     color: black;
 }
@@ -74,6 +69,11 @@ nav {
 nav li a:hover {
     background-color: black;
     color: aqua;
+}
+
+main {
+  margin-left: 200px;
+  padding-top: 8%;
 }
 
 
