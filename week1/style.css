@@ -1,6 +1,11 @@
 /* reset css */
 @import url('./reset.css');
 
+html{
+  scroll-behavior: smooth;
+}
+
+
 .header-section {
     display: flex;
     justify-content: space-between;
@@ -11,6 +16,7 @@
     height: 10%;
     z-index: 1;
 }
+
 
 .fa-house, .fa-bars {
     font-size: 50px;
@@ -72,6 +78,11 @@ main {
   padding-top: 8%;
 }
 
+main h2 {
+  margin-bottom: 2rem;
+  scroll-margin-top: 4rem; /* header 고정 높이만큼 */
+}
+
 
 .banner-section {
   display: flex;
@@ -101,6 +112,7 @@ main {
 .like:hover {
     color: red;
 }
+
 
 section {
     width: 100%;
@@ -132,7 +144,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: x-large;
+    font-size: 1rem;
     background-color: #8EC3B0;
 }
 
@@ -179,9 +191,5 @@ img:hover {
       }
     }
   
-:target {
-  padding-top: 100px;
-  margin-top: -70px; 
-}
 
   
