@@ -18,6 +18,7 @@ html{
 
 .fa-house, .fa-bars {
     font-size: 3rem;
+    color: black;
 }
 
 .header__title {
@@ -189,23 +190,23 @@ img:hover {
 
 /* 오른쪽 네비게이션 스타일 */
 .right-nav {
-  height: 100%; /* 전체 높이 */
-  width: 0; /* 초기에는 너비가 0이어서 보이지 않음 */
-  position: fixed; /* 고정 위치 */
-  z-index: 1; /* 다른 요소보다 위에 */
-  top: 0; /* 위에서부터 */
-  right: 0; /* 오른쪽 정렬 */
-  background-color: #50b69c; /* 배경 색상 */
-  overflow-x: hidden; /* 내용이 넘칠 경우 숨김 */
-  transition: 0.5s; /* 애니메이션 효과 */
+  height: 100%; 
+  width: 0; 
+  position: fixed; 
+  z-index: 1; 
+  top: 0; 
+  right: 0; 
+  background-color: #50b69c; 
+  overflow-x: hidden; 
+  transition: 0.5s; 
 }
 
 .right-nav ul a {
-  padding: 10px 15px; /* 링크 패딩 */
-  text-decoration: none; /* 밑줄 없음 */
-  font-size: 25px; /* 글꼴 크기 */
-  color: white; /* 글꼴 색상 */
-  display: block; /* 블록 레벨 요소로 표시 */
+  padding: 10px 15px; 
+  text-decoration: none; 
+  font-size: 25px; 
+  color: white; 
+  display: block; 
 }
 
 /* 닫기 버튼 스타일 */

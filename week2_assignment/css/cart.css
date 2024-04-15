@@ -20,3 +20,12 @@
     font-size: 2rem;
     color: white;
   }
+
+main {
+    margin-left: 35rem;
+    padding-top: 10%;
+}
+
+table, th, td {
+    border: 1px solid black;
+  }

@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건휘's favorite</title>
+    <title>건휘's market</title>
     <script src="https://kit.fontawesome.com/455c79571e.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
     <body>
+        <!-- 헤더 -->
         <header class="header-section">
-            <i class="fa-solid fa-house"></i>
+            <a href="home.html"><i class="fa-solid fa-house"></i></a>
             <h1 class="header__title">건휘's favorite</h1>
             <i class="fa-solid fa-bars" onclick="openNav()"></i>
         </header>
 
+        <!-- 오른쪽 네비게이션 메뉴 -->
+        <nav class="right-nav" id="rightNav">
+            <ul>
+                <p class="back-btn" onclick="closeNav()">&#10132;</p>
+                <a>관심 상품 목록</a>
+                <a>관리자 페이지</a>
+                <a href="cart.html">장바구니</a>
+            </ul>
+        </nav>
+        <!-- 카테고리 -->
         <nav class="nav-section">
             <h2 class="nav-section__title">전체목록</h2>
             <ul class="nav-section__ul">
@@ -25,289 +36,9 @@
         </nav>
 
         <main>
+            <!-- 배너 -->
             <section class="banner-section">
-                <div class="banner-section__container">
-                  <img src="./img/food/maratang.jpg" alt="마라탕">
-                  <img src="./img/food/ttak.webp" alt="떡볶이">
-                  <img src="./img/food/musket.webp" alt="샤인머스켓">
-                  <img src="./img/food/soondae.jpg" alt="순대">
-                  <img src="./img/food/makchang.avif" alt="막창">
-                  <img src="./img/food/chicken.webp" alt="치킨">
-                  <img src="./img/food/sushi.jpg" alt="스시">
-                  <img src="./img/food/berry.jpg" alt="딸기">
-                  <img src="./img/food/reach.jpg" alt="리치">
-                  <img src="./img/food/peach.jpg" alt="복숭아">
-                  <img src="./img/sports/kia.jpg" alt="기아타이거즈">
-                  <img src="./img/sports/arsenal.jpg" alt="아스날">
-                  <img src="./img/sports/t1.png" alt="t1">
-                </div>
             </section>
-            <section class="all-section">
-                <h2 id="all" class="section-title">전체</h2>
-                <article>
-                    <img src="./img/food/maratang.jpg" alt="마라탕">
-                    <p class="like">♥</p>
-                    <h3>마라탕</h3>
-                    <p>12,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/ttak.webp" alt="떡볶이">
-                    <p class="like">♥</p>
-                    <h3>떡볶이</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/musket.webp" alt="샤인머스켓">
-                    <p class="like">♥</p>
-                    <h3>샤인머스켓</h3>
-                    <p>9,900</p>
-                </article>
-                <article>
-                    <img src="./img/food/soondae.jpg" alt="순대 허파">
-                    <p class="like">♥</p>
-                    <h3>순대 허파</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/makchang.avif" alt="막창">
-                    <p class="like">♥</p>
-                    <h3>막창</h3>
-                    <p>12,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/chicken.webp" alt="치킨">
-                    <p class="like">♥</p>
-                    <h3>치킨</h3>
-                    <p>20,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/sushi.jpg" alt="스시">
-                    <p class="like">♥</p>
-                    <h3>초밥</h3>
-                    <p>18,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/berry.jpg" alt="딸기">
-                    <p class="like">♥</p>
-                    <h3>딸기</h3>
-                    <p>12,800</p>
-                </article>
-                <article>
-                    <img src="./img/food/reach.jpg" alt="리치">
-                    <p class="like">♥</p>
-                    <h3>리치</h3>
-                    <p>12,400</p>
-                </article>
-                <article>
-                    <img src="./img/food/peach.jpg" alt="복숭아">
-                    <p class="like">♥</p>
-                    <h3>복숭아</h3>
-                    <p>14,900</p>
-                </article>
-                <article>
-                    <img src="./img/sports/kia.jpg" alt="기아타이거즈">
-                    <p class="like">♥</p>
-                    <h3>기아 타이거즈</h3>
-                    <p>18,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/arsenal.jpg" alt="아스날">
-                    <p class="like">♥</p>
-                    <h3>아스날</h3>
-                    <p>10,0000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/t1.png" alt="t1">
-                    <p class="like">♥</p>
-                    <h3>t1</h3>
-                    <p>30,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/giants.webp" alt="샌프란시스코 자이언츠">
-                    <p class="like">♥</p>
-                    <h3>샌프란시스코 자이언츠</h3>
-                    <p>80,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/golden.svg" alt="골든스테이트">
-                    <p class="like">♥</p>
-                    <h3>골든스테이트</h3>
-                    <p>60,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/book.png" alt="독서">
-                    <p class="like">♥</p>
-                    <h3>독서</h3>
-                    <p>13,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/go.webp" alt="바둑">
-                    <p class="like">♥</p>
-                    <h3>바둑</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/sleep.webp" alt="누워있기">
-                    <p class="like">♥</p>
-                    <h3>누워있기</h3>
-                    <p>0</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/music.png" alt="음악듣기">
-                    <p class="like">♥</p>
-                    <h3>음악듣기</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/sancheck.jpg" alt="산책">
-                    <p class="like">♥</p>
-                    <h3>산책</h3>
-                    <p>0</p>
-                </article>
-                <!-- Content for 전체 -->
-            </section>
-            <section class="food-section">
-                <h2 id="category1" class="section-title">food</h2>
-                <article>
-                    <img src="./img/food/maratang.jpg" alt="마라탕">
-                    <p class="like">♥</p>
-                    <h3>마라탕</h3>
-                    <p>12,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/ttak.webp" alt="떡볶이">
-                    <p class="like">♥</p>
-                    <h3>떡볶이</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/musket.webp" alt="샤인머스켓">
-                    <p class="like">♥</p>
-                    <h3>샤인머스켓</h3>
-                    <p>9,900</p>
-                </article>
-                <article>
-                    <img src="./img/food/soondae.jpg" alt="순대 허파">
-                    <p class="like">♥</p>
-                    <h3>순대 허파</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/makchang.avif" alt="막창">
-                    <p class="like">♥</p>
-                    <h3>막창</h3>
-                    <p>12,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/chicken.webp" alt="치킨">
-                    <p class="like">♥</p>
-                    <h3>치킨</h3>
-                    <p>20,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/sushi.jpg" alt="스시">
-                    <p class="like">♥</p>
-                    <h3>초밥</h3>
-                    <p>18,000</p>
-                </article>
-                <article>
-                    <img src="./img/food/berry.jpg" alt="딸기">
-                    <p class="like">♥</p>
-                    <h3>딸기</h3>
-                    <p>12,800</p>
-                </article>
-                <article>
-                    <img src="./img/food/reach.jpg" alt="리치">
-                    <p class="like">♥</p>
-                    <h3>리치</h3>
-                    <p>12,400</p>
-                </article>
-                <article>
-                    <img src="./img/food/peach.jpg" alt="복숭아">
-                    <p class="like">♥</p>
-                    <h3>복숭아</h3>
-                    <p>14,900</p>
-                </article>
-                    
-                <!-- Content for 분류1 -->
-            </section>
-            <section class="sports-section">
-                <h2 id="category2" class="section-title">sports</h2>
-                <article>
-                    <img src="./img/sports/kia.jpg" alt="기아타이거즈">
-                    <p class="like">♥</p>
-                    <h3>기아 타이거즈</h3>
-                    <p>18,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/arsenal.jpg" alt="아스날">
-                    <p class="like">♥</p>
-                    <h3></h3>아스날</h3>
-                    <p>100,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/t1.png" alt="t1">
-                    <p class="like">♥</p>
-                    <h3>t1</h3>
-                    <p>30,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/giants.webp" alt="샌프란시스코 자이언츠">
-                    <p class="like">♥</p>
-                    <h3>샌프란시스코 자이언츠</h3>
-                    <p>80,000</p>
-                </article>
-                <article>
-                    <img src="./img/sports/golden.svg" alt="골든스테이트">
-                    <p class="like">♥</p>
-                    <h3>골든스테이트</h3>
-                    <p>60,000</p>
-                </article>
-                <!-- Content for 분류2 -->
-            </section>
-            <section class="hobby-section">
-                <h2 id="category3" class="section-title" id="hobby">hobby</h2>
-                <article>
-                    <img src="./img/hobby/book.png" alt="독서">
-                    <p class="like">♥</p>
-                    <h3>독서</h3>
-                    <p>12,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/go.webp" alt="바둑">
-                    <p class="like">♥</p>
-                    <h3>바둑</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/sleep.webp" alt="잠">
-                    <p class="like">♥</p>
-                    <h3>누워있기</h3>
-                    <p>0</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/music.png" alt="음악 듣기">
-                    <p class="like">♥</p>
-                    <h3>음악듣기</h3>
-                    <p>5,000</p>
-                </article>
-                <article>
-                    <img src="./img/hobby/sancheck.jpg" alt="산책">
-                    <p class="like">♥</p>
-                    <h3>산책</h3>
-                    <p>0</p>
-                </article>
-                <!-- Content for 분류3 -->
-            </section>
-                <!-- 오른쪽 네비게이션 메뉴 -->
-            <div class="right-nav" id="rightNav">
-                <ul>
-                    <p href="#" class="back-btn" onclick="closeNav()">&#10132;</p>
-                    <a>관심 상품 목록</a>
-                    <a>관리자 페이지</a>
-                    <a href="cart.html">장바구니</a>
-                </ul>
-            </div>
         </main>
         <footer>
             <ul>
