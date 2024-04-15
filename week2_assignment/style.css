@@ -1,0 +1,217 @@
+/* reset css */
+@import url('./reset.css');
+
+html{
+  scroll-behavior: smooth;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #9ED5C5;
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    z-index: 1;
+}
+
+.fa-house, .fa-bars {
+    font-size: 3rem;
+}
+
+.header__title {
+  font-size: 2rem;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 40%;
+    position: fixed;
+    border-radius: 8px;
+    margin-left: 30px;
+    width: 140px;
+    height: 200px;
+    background-color: #98DDCA;
+}
+
+.nav-section__title {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.nav-section__ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding: 12px;
+    border-radius: 10px;
+    width: 80px;
+    height: 140px;
+    background-color: #CDF0EA;
+}
+
+.nav-section__ul li {
+    list-style-type: none;
+    list-style: none;
+    background-color: white;
+}
+
+.nav-section__ul li a:hover {
+  background-color: black;
+  color: aqua;
+}
+
+.nav-section__ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+main {
+  margin-left: 12rem;
+  padding-top: 8%;
+}
+
+main h2 {
+  margin-bottom: 2rem;
+  scroll-margin-top: 4rem; /* header 고정 높이만큼 */
+}
+
+
+.banner-section {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 95rem;
+  height: 16rem;
+  }
+  
+  .banner-section__container {
+    display: flex;
+    position: absolute; 
+    width: max-content; 
+    animation: slide 20s linear infinite; 
+  }
+  
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%); 
+    }
+  }
+
+.like:hover {
+    color: red;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+.section-title {
+    font-size: 30px;
+    font-weight: 700;
+    width: 100%;
+    padding: 15px;
+  }
+
+
+article {
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+
+    background-color: #BCEAD5;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    background-color: #8EC3B0;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+
+img {
+    width: 260px;
+    height: 260px;
+    margin: 5px; 
+    transition: transform 0.5s ease; 
+}
+  
+img:hover {
+    animation: pulse 1s infinite alternate ease-in-out;
+}
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1); 
+    }
+    100% {
+      transform: scale(1.1);
+    }
+  }
+
+
+@media (max-width: 1170px) {
+    img {
+        gap: 30px;
+        width: 410px;
+        height: 360px;
+        font-size: large;
+      }
+    }
+  @media (max-width: 1120px) {
+    img {
+        gap: 30px;
+        width: 800px;
+        height: 480px;
+        font-size: large;
+      }
+    }
+
+/* 오른쪽 네비게이션 스타일 */
+.right-nav {
+  height: 100%; /* 전체 높이 */
+  width: 0; /* 초기에는 너비가 0이어서 보이지 않음 */
+  position: fixed; /* 고정 위치 */
+  z-index: 1; /* 다른 요소보다 위에 */
+  top: 0; /* 위에서부터 */
+  right: 0; /* 오른쪽 정렬 */
+  background-color: #50b69c; /* 배경 색상 */
+  overflow-x: hidden; /* 내용이 넘칠 경우 숨김 */
+  transition: 0.5s; /* 애니메이션 효과 */
+}
+
+.right-nav ul a {
+  padding: 10px 15px; /* 링크 패딩 */
+  text-decoration: none; /* 밑줄 없음 */
+  font-size: 25px; /* 글꼴 크기 */
+  color: white; /* 글꼴 색상 */
+  display: block; /* 블록 레벨 요소로 표시 */
+}
+
+/* 닫기 버튼 스타일 */
+.back-btn {
+  display: felx;
+  margin-left: 1rem;
+  font-size: 3rem;
+}
+  
