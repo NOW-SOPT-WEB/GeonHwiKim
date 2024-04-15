@@ -50,8 +50,8 @@ html {
 
 .section__div {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  position: relative;
   width: 250px;
   height: 30px;
   margin: 10px;
@@ -79,10 +79,6 @@ html {
 }
 
 .section__btn {
-  position: absolute;
-  right: 20px;
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
   border: none;
   background-color: green;
