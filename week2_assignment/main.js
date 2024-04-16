@@ -41,5 +41,15 @@ const renderProducts = (SHOPPING_LIST) => {
     });
 }
 
-// 페이지 로드 시 상품 랜더링 함수 실행
+const handleCategoryClick = (category) => {
+    const filteredProducts = category === '전체' ? SHOPPING_LIST : SHOPPING_LIST.filter(product => product.category === category);
+    renderProducts(filteredProducts);
+};
+
+document.querySelectorAll('.nav-section__ul li').forEach(item => {
+    item.addEventListener('click', () => handleCategoryClick(item.textContent.trim()));
+});
+
+document.addEventListener("DOMContentLoaded", () => renderProducts(SHOPPING_LIST));
+
 renderProducts(SHOPPING_LIST);
