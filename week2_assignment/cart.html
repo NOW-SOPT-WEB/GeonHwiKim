@@ -8,50 +8,42 @@
     <title>wishlist_cart</title>
 </head>
 <body>
+  <!-- cart 헤더 -->
     <header class="cart-header-section">
         <a href="home.html"><i class="fa-solid fa-house"></i></a>
         <h1 class="header__title">장바구니 페이지</h1>
         <i class="fa-solid fa-bars"></i>
     </header>
 
-    <main>
-        <table>
-            <tr>
-              <th>check</th>
-              <th colspan="2">상품정보</th>
-              <th>가격</th>
-              <th>카테고리</th>
-              <th>비고</th>
-            </tr>
-            <tr>
-              <td>Breed</td>
-              <td>Jack Russell</td>
-              <td>Poodle</td>
-              <td>Streetdog</td>
-              <td>Cocker Spaniel</td>
-            </tr>
-            <tr>
-              <td>Age</td>
-              <td>16</td>
-              <td>9</td>
-              <td>10</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>Owner</td>
-              <td>Mother-in-law</td>
-              <td>Me</td>
-              <td>Me</td>
-              <td>Sister-in-law</td>
-            </tr>
-            <tr>
-              <td>Eating Habits</td>
-              <td>Eats everyone's leftovers</td>
-              <td>Nibbles at food</td>
-              <td>Hearty eater</td>
-              <td>Will eat till he explodes</td>
-            </tr>
-          </table>
-    </main>
+    <!-- 메인 -->
+    <main class="cart-main">
+      <table class="cart-table">
+          <thead>
+              <tr>
+                  <th>
+                    <input type="checkbox" id="selectAllCheckbox" />
+                  </th>
+                  <th>이미지</th>
+                  <th>상품명</th>
+                  <th>가격</th>
+                  <th>카테고리</th>
+                  <th>비고</th>
+              </tr>
+          </thead>
+          <tbody id="cart-items">
+              <!-- 장바구니 아이템이 여기에 동적으로 추가됩니다 -->
+          </tbody>
+      </table>
+      <button id="buy-btn">구매하기</button>
+      <button id="home-btn">홈으로</button>
+  </main>
+
+  <div class="modal">
+    <div class="modal_content">
+    </div>
+  </div>
+
+  <script src="./cart.js"></script>
+
 </body>
 </html>
