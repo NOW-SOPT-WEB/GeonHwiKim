@@ -185,6 +185,16 @@ footer ul {
   display: block; 
 }
 
+ /* hover 적용 */
+.right-nav ul a:hover {
+  background-color: #6ad4b8; /* Lighter shade of the nav background for contrast */
+  color: #000; /* Changes text color, optional */
+  font-size: 27px; /* Slightly larger text on hover */
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease; /* Smooth transition for all properties */
+}
+
+
+
 /* 닫기 버튼 스타일 */
 .back-btn {
   display: felx;
