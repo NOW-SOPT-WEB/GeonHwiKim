@@ -34,7 +34,27 @@ function renderCartItems() {
         categoryCell.textContent = item.category;
 
         const remarkCell = document.createElement('td');
-        remarkCell.textContent = '비고'; 
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '삭제';
+        deleteButton.onclick = function() {
+            const row = this.parentNode.parentNode;
+            const itemName = row.children[2].textContent; // 상품명을 사용하여 식별
+
+            // sessionStorage에서 상품 삭제
+            let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+            const newCart = cart.filter(product => product.name !== itemName); // 상품명이 일치하지 않는 상품만 남깁니다
+            sessionStorage.setItem('cart', JSON.stringify(newCart));
+
+            // DOM에서 행 삭제
+            row.parentNode.removeChild(row);
+
+            // 장바구니가 비었다면 비어있음을 표시
+            if (newCart.length === 0) {
+                const tableBody = document.getElementById('cart-items');
+                tableBody.innerHTML = '<tr><td colspan="6">장바구니가 비어 있습니다.</td></tr>';
+            }
+        };
+        remarkCell.appendChild(deleteButton);
 
         tr.appendChild(checkboxCell);
         tr.appendChild(imgCell);
