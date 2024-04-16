@@ -22,13 +22,41 @@
   }
 
 main {
-    margin-left: 35rem;
+    margin-left: 23rem;
     padding-top: 10%;
 }
 
 table, th, td {
     border: 1px solid black;
+    width: 12rem;
+    height: 5rem;
   }
+
+thead {
+    background-color: #9ED5C5;
+    text-align: center;
+}
+
+tr, th, td {
+    text-align: center;
+}
+
+.cart-table {
+    width: 80%; /* 테이블 너비를 화면에 맞춥니다 */
+    max-height: 400px; /* 최대 높이를 400px로 설정합니다 */
+    overflow-y: auto; /* 세로 스크롤을 활성화합니다 */
+}
+
+
+#buy-btn {
+    margin-top: 10rem;
+    margin-left: 28rem;
+    padding: 10px 30px;
+}
+
+#home-btn {
+    padding: 10px 30px;
+}
 
 
 
