@@ -107,10 +107,6 @@ main h2 {
     }
   }
 
-.like:hover {
-    color: red;
-}
-
 section {
     width: 100%;
     display: flex;
@@ -127,15 +123,6 @@ section {
   }
 
 
-article {
-    padding: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    font-size: 15px;
-
-    background-color: #BCEAD5;
-}
 
 footer {
     display: flex;
@@ -148,18 +135,7 @@ footer {
 footer ul {
     list-style-type: none;
 }
-
-
-img {
-    width: 260px;
-    height: 260px;
-    margin: 5px; 
-    transition: transform 0.5s ease; 
-}
   
-img:hover {
-    animation: pulse 1s infinite alternate ease-in-out;
-}
   
   @keyframes pulse {
     0% {
@@ -214,5 +190,52 @@ img:hover {
   display: felx;
   margin-left: 1rem;
   font-size: 3rem;
+}
+
+
+.section-products {
+  display: grid;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 4rem;
+}
+
+.section-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 100%;
+  height: 20rem;
+  padding: 8% 0;
+  background-color: #9ED5C5;
+
+}
+
+.section-img {
+  width: 70%;
+  height: 60%;
+}
+  
+ 
+.section-heart{
+  width: 10%;
+  height: 10%;
+  margin-top: 10%;
+}
+
+.section-name {
+  margin-top: 5%;
+
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.section-price {
+  margin-top: 5%;
+
+  font-size: 1.5rem;
+  font-weight: 500;
 }
   

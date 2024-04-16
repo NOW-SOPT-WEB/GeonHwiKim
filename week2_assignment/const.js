@@ -1,5 +1,5 @@
 // 초기 리스트
-const SHOPPING_LIST = [
+export const SHOPPING_LIST = [
     {
         id: 1,
         name: "딸기",
@@ -44,7 +44,7 @@ const SHOPPING_LIST = [
     },
     {
         id: 7,
-        name: "샌프란시스코 자이언츠",
+        name: "자이언츠",
         category: "sports",
         price: 80000,
         img: "./img/sports/giants.jpg", 
@@ -106,3 +106,5 @@ const SHOPPING_LIST = [
         img: "./img/hobby/sleep.jpg", 
     },
 ]
+
+
