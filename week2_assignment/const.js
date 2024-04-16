@@ -66,7 +66,7 @@ export const SHOPPING_LIST = [
     {
         id: 10,
         name: "t1",
-        category: "sprots",
+        category: "sports",
         price: 30000,
         img: "./img/sports/t1.jpg", 
     },
