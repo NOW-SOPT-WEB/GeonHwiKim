@@ -1,4 +1,4 @@
-@import url('./reset.css');
+@import url('../css/reset.css');
 
 .cart-header-section {
     display: flex;
@@ -61,7 +61,7 @@ thead {
 .table-section > table tbody {
     display: block;
     max-height: 20rem;
-    overflow: auto;
+    overflow-y: auto;
     width: 100%;
 }
 

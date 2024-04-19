@@ -1,4 +1,4 @@
-import { SHOPPING_LIST } from "./const.js";
+import { SHOPPING_LIST } from "../js/const.js";
 
 //전체 이미지 렌더링
 const renderProducts = (SHOPPING_LIST) => {
@@ -23,7 +23,7 @@ const renderProducts = (SHOPPING_LIST) => {
         });
 
         const heartImg = document.createElement("img");
-        heartImg.src = "./img/heart.jpg";
+        heartImg.src = "../img/heart.jpg";
         heartImg.alt = "좋아요 버튼";
         heartImg.className = "section-heart";
 
