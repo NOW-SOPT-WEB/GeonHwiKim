@@ -22,36 +22,59 @@
   }
 
 main {
-    margin-left: 23rem;
+    margin-left: 10rem;
     padding-top: 10%;
 }
 
-table, th, td {
-    border: 1px solid black;
-    width: 12rem;
-    height: 5rem;
+.table-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 80%;
+}
+
+.table-section > table tr {
+    display: table;
+    border: 0.1rem solid #000000;
+    text-align: center;
+    width: 100%;
+    height: 6rem;
+    table-layout: fixed;
   }
 
 
+th, td {
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+
 thead {
     background-color: #9ED5C5;
-    text-align: center;
+    display: block;
+    width: 100%;
 }
 
-tr, th, td {
-    text-align: center;
+
+.table-section > table tbody {
+    display: block;
+    max-height: 20rem;
+    overflow: auto;
+    width: 100%;
 }
 
-.cart-table {
-    width: 80%; /* 테이블 너비를 화면에 맞춥니다 */
-    max-height: 400px; /* 최대 높이를 400px로 설정합니다 */
-    overflow-y: auto; /* 세로 스크롤을 활성화합니다 */
-}
+
+.table-section > table img {
+    width: 4rem;
+    height: 4rem;
+  }
 
 
 #buy-btn {
-    margin-top: 10rem;
-    margin-left: 28rem;
+    margin-top: 5rem;
+    margin-left: 42rem;
     padding: 10px 30px;
 }
 
@@ -59,7 +82,7 @@ tr, th, td {
     padding: 10px 30px;
 }
 
-
+/* 모달 */
 .modal {
     position: fixed;
     top: 20rem;
