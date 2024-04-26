@@ -31,10 +31,10 @@ html{
     align-items: center;
     top: 40%;
     position: fixed;
-    border-radius: 8px;
-    margin-left: 30px;
-    width: 140px;
-    height: 200px;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    width: 9rem;
+    height: 13rem;
     background-color: #98DDCA;
 }
 
@@ -48,11 +48,11 @@ html{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-    padding: 12px;
-    border-radius: 10px;
-    width: 80px;
-    height: 140px;
+    gap: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.625rem;
+    width: 5rem;
+    height: 9rem;
     background-color: #CDF0EA;
 }
 
@@ -116,10 +116,10 @@ section {
   }
 
 .section-title {
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 700;
     width: 100%;
-    padding: 15px;
+    padding: 1rem;
   }
 
 
@@ -149,17 +149,17 @@ footer ul {
 
 @media (max-width: 1170px) {
     img {
-        gap: 30px;
-        width: 410px;
-        height: 360px;
+        gap: 2rem;
+        width: 26rem;
+        height: 23rem;
         font-size: large;
       }
     }
   @media (max-width: 1120px) {
     img {
-        gap: 30px;
-        width: 800px;
-        height: 480px;
+        gap: 2rem;
+        width: 50rem;
+        height: 30rem;
         font-size: large;
       }
     }
