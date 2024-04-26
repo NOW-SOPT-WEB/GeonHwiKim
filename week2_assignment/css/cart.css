@@ -51,6 +51,35 @@ th, td {
     box-sizing: border-box;
 }
 
+thead tr,
+tbody tr {
+display: table;
+width: 70rem;
+}
+
+tbody td:nth-child(1) {
+width: 16.9%;
+}
+
+tbody td:nth-child(2) {
+    width: 17.2%;
+}
+
+tbody td:nth-child(3) {
+    width: 16.5%;
+}
+
+tbody td:nth-child(4) {
+    width: 16.8%;
+}
+
+tbody td:nth-child(5) {
+    width: 16.9%;
+}
+
+
+
+
 thead {
     background-color: #9ED5C5;
     display: block;
@@ -62,6 +91,7 @@ thead {
     display: block;
     max-height: 20rem;
     overflow-y: auto;
+    overflow-x: hidden;
     width: 100%;
 }
 
