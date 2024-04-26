@@ -23,7 +23,7 @@ function renderCartItems() {
         const img = document.createElement('img');
         img.src = item.img;
         img.alt = item.name;
-        img.style.width = '50px';
+        img.style.width = '3.5rem';
         imgCell.appendChild(img);
 
         const nameCell = document.createElement('td');
