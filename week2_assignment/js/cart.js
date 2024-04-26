@@ -65,7 +65,7 @@ function setupSelectAllCheckbox() {
 }
 
 function deleteCartItem(itemName) {
-    let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+    const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
     const newCart = cart.filter(product => product.name !== itemName);
     sessionStorage.setItem('cart', JSON.stringify(newCart));
     renderCartItems();

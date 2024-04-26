@@ -61,6 +61,4 @@ document.querySelectorAll('.nav-section__ul li').forEach(item => {
     item.addEventListener('click', () => handleCategoryClick(item.textContent.trim()));
 });
 
-document.addEventListener("DOMContentLoaded", () => renderProducts(SHOPPING_LIST));
-
 renderProducts(SHOPPING_LIST);
