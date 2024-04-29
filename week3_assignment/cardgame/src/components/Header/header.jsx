@@ -26,5 +26,5 @@ const MainHeaderWrapper = styled.section`
 `;
 
 const MainHeaderTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fonts.xxl};
+  font-size: ${({ theme }) => theme.fonts.xl};
 `;
