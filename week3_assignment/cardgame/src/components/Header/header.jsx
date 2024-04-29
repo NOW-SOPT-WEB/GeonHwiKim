@@ -20,7 +20,7 @@ const MainHeaderWrapper = styled.section`
   width: 100%;
   height: 20rem;
 
-  color: ${({ theme }) => theme.colors.black};;
+  color: ${({ theme }) => theme.colors.black};
 
   background-color: ${({ theme }) => theme.colors.secondmint};
 `;
