@@ -25,5 +25,7 @@ const HomePageWrapper = styled.div`
 
 const StageBtnWrapper = styled.section`
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 5rem;
 `
