@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건휘's market</title>
+    <script src="https://kit.fontawesome.com/455c79571e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+    <body>
+        <!-- 헤더 -->
+        <header class="header-section">
+            <a href="../html/home.html"><i class="fa-solid fa-house"></i></a>
+            <h1 class="header__title">건휘's favorite</h1>
+            <i class="fa-solid fa-bars" onclick="openNav()"></i>
+        </header>
+
+        <!-- 오른쪽 네비게이션 메뉴 -->
+        <nav class="right-nav" id="rightNav">
+            <ul>
+                <p class="back-btn" onclick="closeNav()">&#10132;</p>
+                <a>관심 상품 목록</a>
+                <a>관리자 페이지</a>
+                <a href="../html/cart.html">장바구니</a>
+            </ul>
+        </nav>
+        <!-- 카테고리 -->
+        <nav class="nav-section">
+            <h2 class="nav-section__title">전체목록</h2>
+            <ul class="nav-section__ul">
+                <li>전체</li>
+                <li>food</li>
+                <li>sports</li>
+                <li>hobby</li>
+            </ul>
+        </nav>
+
+        <main>
+            <article class="section-products">
+            </article>
+        </main>
+        
+        <footer>
+            <ul>
+                <li>34기 NOW SOPT 웹파트 1주차 과제</li>
+                <li>이름 | 김건휘</li>
+                <li>TEL | 010-6202-6468</li>
+                <li>gitHub | KIMGEONHWI</li>
+                <li>instgram | hedgehxgh</li>
+                <li>email | dirnrlarjsgn@naver.com</li>
+            </ul>
+        </footer>
+    </body>
+    <script src="../js/sideNav.js"></script>
+    <script src="../js/main.js" type="module"></script>
+    <script src="../js/addCart.js"></script>
+</html>
