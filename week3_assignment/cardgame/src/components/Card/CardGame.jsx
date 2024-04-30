@@ -1,62 +1,75 @@
 import { useState, useEffect } from 'react';
 import styled from "@emotion/styled";
 import { CARD_LIST } from "../../constants/cardlist";
+import Modal from "../Modal/Modal"; // 모달 컴포넌트를 임포트합니다.
 
 const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [cards, setCards] = useState([]);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);
-  const [isFlipping, setIsFlipping] = useState(false);  // 카드가 뒤집히고 있는지 여부를 추적
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [showModal, setShowModal] = useState(false); // 모달 표시 상태
 
   const shuffleArray = (array) => {
     return array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value);
   };
 
   useEffect(() => {
-    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
-    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({...card}))];
-    setCards(shuffleArray(gameCards));
-    setFlippedIndexes([]);
-    setMatchedIndexes([]);
+    resetGame();
   }, [numPairs, selectedLevel]);
 
   useEffect(() => {
     setMatchedPairsCount(matchedIndexes.length / 2);
-  }, [matchedIndexes, setMatchedPairsCount]);
+    if (matchedIndexes.length === numPairs * 2) {
+      setShowModal(true); // 모든 쌍이 매치되었을 때 모달 표시
+    }
+  }, [matchedIndexes, setMatchedPairsCount, numPairs]);
 
   const handleCardClick = (index) => {
     if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
-      return; // isFlipping 상태가 true이거나 카드가 이미 뒤집혀있거나 매치된 경우 더 이상 진행하지 않음
+      return; // 카드가 뒤집히는 중이거나 이미 선택된 경우 클릭을 무시
     }
 
     const newFlippedIndexes = [...flippedIndexes, index];
     setFlippedIndexes(newFlippedIndexes);
 
     if (newFlippedIndexes.length === 2) {
-      setIsFlipping(true); // 두 카드가 뒤집힌 상태에서 다른 카드의 클릭을 막음
+      setIsFlipping(true); // 추가 클릭 방지를 위해 플래그 설정
       const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
       if (match) {
         setMatchedIndexes([...matchedIndexes, ...newFlippedIndexes]);
       }
       setTimeout(() => {
         setFlippedIndexes([]);
-        setIsFlipping(false); // 뒤집기 애니메이션 후 isFlipping을 false로 설정하여 다른 카드를 클릭할 수 있게 함
+        setIsFlipping(false); // 뒤집기 완료 후 클릭 가능하도록 플래그 해제
       }, 1000);
     }
   };
 
+  const resetGame = () => {
+    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
+    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({ ...card }))];
+    setCards(shuffleArray(gameCards)); // 카드 재셔플
+    setFlippedIndexes([]);
+    setMatchedIndexes([]);
+    setShowModal(false); // 모달 숨기기
+  };
+
   return (
-    <GameContainer level={selectedLevel}>
-      {cards.map((card, index) => (
-        <CardWrapper key={index} onClick={() => handleCardClick(index)}>
-          <img
-            src={card.imgSrc}
-            alt={card.imgAlt}
-            style={{ visibility: flippedIndexes.includes(index) || matchedIndexes.includes(index) ? 'visible' : 'hidden' }}
-          />
-        </CardWrapper>
-      ))}
-    </GameContainer>
+    <>
+      {showModal && <Modal onClose={resetGame} />}
+      <GameContainer level={selectedLevel}>
+        {cards.map((card, index) => (
+          <CardWrapper key={index} onClick={() => handleCardClick(index)}>
+            <img
+              src={card.imgSrc}
+              alt={card.imgAlt}
+              style={{ visibility: flippedIndexes.includes(index) || matchedIndexes.includes(index) ? 'visible' : 'hidden' }}
+            />
+          </CardWrapper>
+        ))}
+      </GameContainer>
+    </>
   );
 };
 
@@ -83,6 +96,6 @@ const CardWrapper = styled.article`
   justify-content: center;
 
   img {
-    width: 100%;
+    width: 100%; // 이미지의 비율을 유지
   }
 `;
