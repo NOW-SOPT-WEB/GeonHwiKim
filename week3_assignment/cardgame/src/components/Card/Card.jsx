@@ -1,19 +1,15 @@
 import styled from "@emotion/styled";
 import { CARD_LIST } from "../../constants/cardlist";
 
-const Card = () => {
-  // 배열 랜덤하게 섞어주는 함수
+const Card = ({ numPairs }) => {
   const shuffleArray = (array) => {
-    return array
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
+    return array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value);
   };
 
-  // 화면 랜더링 될때마다 이미지 랜덤하게 섞기
-  const shuffledCards = shuffleArray(CARD_LIST);
+  // 필요한 수의 카드만 선택하고 섞기
+  const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
 
-  // 이미지 두 번씩 랜더링 하기 위해 배열을 두 배로 확장
+  // 카드 배열을 두 배로 확장
   const doubledCards = [...shuffledCards, ...shuffledCards];
 
   return doubledCards.map((card, index) => (

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
-const LevelBtn = (props) => {
-    return <Level>{props.level}</Level>;
+const LevelBtn = ({ level, onClick }) => {
+    return <Level onClick={() => onClick(level)}>{level}</Level>;
 };
 
 export default LevelBtn;
