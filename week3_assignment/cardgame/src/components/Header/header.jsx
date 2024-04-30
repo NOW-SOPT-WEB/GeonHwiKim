@@ -1,14 +1,20 @@
 import styled from "@emotion/styled";
 
-function MainHeader() {
+function MainHeader({ numPairs, matchedPairsCount }) {
   return (
     <MainHeaderWrapper>
       <MainHeaderTitle>옷 맞추기</MainHeaderTitle>
+      <ScoreDisplay>{matchedPairsCount}/{numPairs}</ScoreDisplay>
     </MainHeaderWrapper>
   );
 }
 
 export default MainHeader;
+
+const ScoreDisplay = styled.span`
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.black};
+`;
 
 const MainHeaderWrapper = styled.section`
   display: flex;

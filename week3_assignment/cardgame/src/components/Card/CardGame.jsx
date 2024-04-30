@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from "@emotion/styled";
 import { CARD_LIST } from "../../constants/cardlist";
 
-const CardGame = ({ numPairs, selectedLevel }) => {
+const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [cards, setCards] = useState([]);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);
@@ -12,16 +12,18 @@ const CardGame = ({ numPairs, selectedLevel }) => {
   };
 
   useEffect(() => {
-    // 난이도 또는 카드 쌍의 수가 변경될 때 카드를 셔플하고 게임 준비
-    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
-    const gameCards = [...shuffledCards, ...shuffledCards];
-    setCards(shuffleArray(gameCards));
-    
-    // 난이도가 변경되었을 때 뒤집힌 카드와 맞춘 카드의 인덱스를 초기화
+    // 카드 리스트를 셔플하고, 필요한 수만큼의 카드를 선택한 후, 각 카드를 복제하여 게임 카드 배열을 준비합니다.
+    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs); // numPairs만큼 카드를 선택
+    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({...card}))]; // 각 카드를 복제하여 게임 배열 준비
+    setCards(shuffleArray(gameCards)); // 게임 카드를 다시 한번 셔플
+
     setFlippedIndexes([]);
     setMatchedIndexes([]);
-  }, [numPairs, selectedLevel]); // selectedLevel을 추가하여 난이도 변경 시 리셋되도록 함
-  
+}, [numPairs, selectedLevel]); // 난이도 변경 시 리셋
+
+  useEffect(() => {
+    setMatchedPairsCount(matchedIndexes.length / 2); // 매치된 쌍의 수를 상위 컴포넌트에 전달
+  }, [matchedIndexes, setMatchedPairsCount]);
 
   const handleCardClick = (index) => {
     if (flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
@@ -57,7 +59,6 @@ const CardGame = ({ numPairs, selectedLevel }) => {
 
 export default CardGame;
 
-// 게임 컨테이너 스타일을 난이도에 따라 동적으로 조정
 const GameContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -65,7 +66,6 @@ const GameContainer = styled.div`
   gap: 1rem;
   padding: 2rem;
 
-  // 난이도에 따라 카드 한 줄에 몇 개씩 보여줄지 결정
   article {
     width: ${({ level }) => (level === "Easy" ? "18%" : level === "Normal" ? "13.5%" : "10%")};
   }
@@ -80,6 +80,6 @@ const CardWrapper = styled.article`
   justify-content: center;
 
   img {
-    width: 100%; //이미지 비율 유지
+    width: 100%; // 이미지 비율 유지
   }
 `;
