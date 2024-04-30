@@ -46,5 +46,6 @@ const CardWrapper = styled.section`
   align-items: center;
   gap: 1rem;
   margin-top: 5rem;
+  flex-wrap: wrap;
 `;
 

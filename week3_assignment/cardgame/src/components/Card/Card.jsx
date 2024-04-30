@@ -5,7 +5,6 @@ const Card = () => {
   return CARD_LIST.map((card, index) => (
     <CardWrapper key={index}>
       <img src={card.imgSrc} alt={card.imgAlt} />
-      <p>{card.imgAlt}</p>
     </CardWrapper>
   ));
 };
@@ -19,4 +18,9 @@ const CardWrapper = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img {
+    width: 15rem;
+    height: 20rem;
+  }
 `;
