@@ -8,6 +8,7 @@ const colors = {
     white: "#FFFFFF",
     black: "#010101",
     gray: "#BBBBBB",
+    aliceblue: "#f0f8ff"
 };
 
 const fonts = {

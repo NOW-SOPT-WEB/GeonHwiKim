@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
-const StageBtn = (props) => {
-    return <Stage>{props.stage}</Stage>;
+const LevelBtn = (props) => {
+    return <Level>{props.level}</Level>;
 };
 
-export default StageBtn;
+export default LevelBtn;
 
-const Stage = styled.button`
+const Level = styled.button`
     padding: 3rem 6rem;
     border: 0.1rem solid;
     border-radius: 1rem;
