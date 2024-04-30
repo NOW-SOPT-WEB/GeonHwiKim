@@ -24,7 +24,7 @@ export default Card;
 const CardWrapper = styled.article`
   border-radius: 0.8rem;
   padding: 5rem 3rem;
-  background-color: aqua;
+  background-color: ${({ theme }) => theme.colors.thirdmint};
   display: flex;
   flex-direction: column;
   align-items: center;
