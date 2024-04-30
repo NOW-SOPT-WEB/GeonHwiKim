@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import styled from "@emotion/styled";
 import { CARD_LIST } from "../../constants/cardlist";
-import Modal from "../Modal/Modal"; // 모달 컴포넌트를 임포트합니다.
+import Modal from "../Modal/Modal";
 
 const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [cards, setCards] = useState([]);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);
   const [isFlipping, setIsFlipping] = useState(false);
-  const [showModal, setShowModal] = useState(false); // 모달 표시 상태
+  const [showModal, setShowModal] = useState(false);
 
   const shuffleArray = (array) => {
     return array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value);
@@ -21,27 +21,27 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   useEffect(() => {
     setMatchedPairsCount(matchedIndexes.length / 2);
     if (matchedIndexes.length === numPairs * 2) {
-      setShowModal(true); // 모든 쌍이 매치되었을 때 모달 표시
+      setShowModal(true);
     }
   }, [matchedIndexes, setMatchedPairsCount, numPairs]);
 
   const handleCardClick = (index) => {
     if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
-      return; // 카드가 뒤집히는 중이거나 이미 선택된 경우 클릭을 무시
+      return;
     }
 
     const newFlippedIndexes = [...flippedIndexes, index];
     setFlippedIndexes(newFlippedIndexes);
 
     if (newFlippedIndexes.length === 2) {
-      setIsFlipping(true); // 추가 클릭 방지를 위해 플래그 설정
+      setIsFlipping(true);
       const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
       if (match) {
         setMatchedIndexes([...matchedIndexes, ...newFlippedIndexes]);
       }
       setTimeout(() => {
         setFlippedIndexes([]);
-        setIsFlipping(false); // 뒤집기 완료 후 클릭 가능하도록 플래그 해제
+        setIsFlipping(false);
       }, 1000);
     }
   };
@@ -49,23 +49,30 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const resetGame = () => {
     const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
     const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({ ...card }))];
-    setCards(shuffleArray(gameCards)); // 카드 재셔플
+    setCards(shuffleArray(gameCards));
     setFlippedIndexes([]);
     setMatchedIndexes([]);
-    setShowModal(false); // 모달 숨기기
+    setShowModal(false);
   };
 
   return (
     <>
-      {showModal && <Modal onClose={resetGame} />}
+      {showModal && <ModalWrapper><Modal onClose={resetGame} /></ModalWrapper>}
       <GameContainer level={selectedLevel}>
         {cards.map((card, index) => (
           <CardWrapper key={index} onClick={() => handleCardClick(index)}>
-            <img
-              src={card.imgSrc}
-              alt={card.imgAlt}
-              style={{ visibility: flippedIndexes.includes(index) || matchedIndexes.includes(index) ? 'visible' : 'hidden' }}
-            />
+            <div className={`card ${flippedIndexes.includes(index) || matchedIndexes.includes(index) ? "flipped" : ""}`}>
+              <img
+                className="card-face card-front"
+                src="/public/backimg.png" 
+                alt="Card Back" 
+              />
+              <img
+                className="card-face card-back"
+                src={card.imgSrc} 
+                alt={card.imgAlt} 
+              />
+            </div>
           </CardWrapper>
         ))}
       </GameContainer>
@@ -74,6 +81,18 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
 };
 
 export default CardGame;
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; // 모달이 제일 앞에 뜰 수 있도록
+`;
 
 const GameContainer = styled.div`
   display: flex;
@@ -88,14 +107,40 @@ const GameContainer = styled.div`
 `;
 
 const CardWrapper = styled.article`
+  perspective: 1000px;
   border-radius: 0.8rem;
   padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.thirdmint};
+  background-color: ${({ theme }) => theme.colors.aliceblue};
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: auto; 
 
-  img {
-    width: 100%; // 이미지의 비율을 유지
+  .card {
+    width: 30rem;
+    height: 30rem;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+
+    &.flipped {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 30rem;
+    backface-visibility: hidden;
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
   }
 `;
