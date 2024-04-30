@@ -11,11 +11,6 @@ function MainHeader({ numPairs, matchedPairsCount }) {
 
 export default MainHeader;
 
-const ScoreDisplay = styled.span`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.black};
-`;
-
 const MainHeaderWrapper = styled.section`
   display: flex;
   flex-direction: column;
@@ -33,4 +28,9 @@ const MainHeaderWrapper = styled.section`
 
 const MainHeaderTitle = styled.h1`
   font-size: ${({ theme }) => theme.fonts.xl};
+`;
+
+const ScoreDisplay = styled.span`
+  font-size: ${({ theme }) => theme.fonts.xl};
+  color: ${({ theme }) => theme.colors.black};
 `;
