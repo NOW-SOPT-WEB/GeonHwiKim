@@ -12,10 +12,16 @@ const CardGame = ({ numPairs, selectedLevel }) => {
   };
 
   useEffect(() => {
+    // 난이도 또는 카드 쌍의 수가 변경될 때 카드를 셔플하고 게임 준비
     const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
     const gameCards = [...shuffledCards, ...shuffledCards];
     setCards(shuffleArray(gameCards));
-  }, [numPairs]);
+    
+    // 난이도가 변경되었을 때 뒤집힌 카드와 맞춘 카드의 인덱스를 초기화
+    setFlippedIndexes([]);
+    setMatchedIndexes([]);
+  }, [numPairs, selectedLevel]); // selectedLevel을 추가하여 난이도 변경 시 리셋되도록 함
+  
 
   const handleCardClick = (index) => {
     if (flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
