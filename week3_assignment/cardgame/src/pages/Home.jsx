@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import styled from "@emotion/styled";
 import MainHeader from "../components/Header/header";
 import LevelBtn from "../components/Button/LevelBtn";
-import Card from "../components/Card/Card";
-import { useState } from "react";
+import CardGame from "../components/Card/CardGame"; // 컴포넌트 경로 확인 필요
 
 function Home() {
   const [numPairs, setNumPairs] = useState(5); // 기본으로 Easy 난이도의 5쌍을 설정
@@ -17,16 +17,16 @@ function Home() {
 
   return (
     <HomePageWrapper>
-      <MainHeader/>
+      <MainHeader />
       <MainWrapper>
         <LevelBtnWrapper>
-          <LevelBtn level={"Easy"} selected={selectedLevel === "Easy"} onClick={handleLevelChange} />
-          <LevelBtn level={"Normal"} selected={selectedLevel === "Normal"} onClick={handleLevelChange} />
-          <LevelBtn level={"Hard"} selected={selectedLevel === "Hard"} onClick={handleLevelChange} />
+          <LevelBtn level={"Easy"} selected={selectedLevel === "Easy"} onClick={() => handleLevelChange("Easy")} />
+          <LevelBtn level={"Normal"} selected={selectedLevel === "Normal"} onClick={() => handleLevelChange("Normal")} />
+          <LevelBtn level={"Hard"} selected={selectedLevel === "Hard"} onClick={() => handleLevelChange("Hard")} />
         </LevelBtnWrapper>
       </MainWrapper>
       <CardWrapper>
-        <Card numPairs={numPairs} />
+        <CardGame numPairs={numPairs} selectedLevel={selectedLevel} />
       </CardWrapper>
     </HomePageWrapper>
   );
@@ -35,7 +35,7 @@ function Home() {
 export default Home;
 
 const HomePageWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.aliceblue};
 `;
 
@@ -56,5 +56,4 @@ const CardWrapper = styled.section`
   align-items: center;
   gap: 1rem;
   margin-top: 5rem;
-  flex-wrap: wrap;
 `;
