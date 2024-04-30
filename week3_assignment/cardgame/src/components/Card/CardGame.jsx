@@ -6,38 +6,41 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [cards, setCards] = useState([]);
   const [flippedIndexes, setFlippedIndexes] = useState([]);
   const [matchedIndexes, setMatchedIndexes] = useState([]);
+  const [isFlipping, setIsFlipping] = useState(false);  // 카드가 뒤집히고 있는지 여부를 추적
 
   const shuffleArray = (array) => {
     return array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value);
   };
 
   useEffect(() => {
-    // 카드 리스트를 셔플하고, 필요한 수만큼의 카드를 선택한 후, 각 카드를 복제하여 게임 카드 배열을 준비합니다.
-    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs); // numPairs만큼 카드를 선택
-    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({...card}))]; // 각 카드를 복제하여 게임 배열 준비
-    setCards(shuffleArray(gameCards)); // 게임 카드를 다시 한번 셔플
-
+    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
+    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({...card}))];
+    setCards(shuffleArray(gameCards));
     setFlippedIndexes([]);
     setMatchedIndexes([]);
-}, [numPairs, selectedLevel]); // 난이도 변경 시 리셋
+  }, [numPairs, selectedLevel]);
 
   useEffect(() => {
-    setMatchedPairsCount(matchedIndexes.length / 2); // 매치된 쌍의 수를 상위 컴포넌트에 전달
+    setMatchedPairsCount(matchedIndexes.length / 2);
   }, [matchedIndexes, setMatchedPairsCount]);
 
   const handleCardClick = (index) => {
-    if (flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
-      return;
+    if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
+      return; // isFlipping 상태가 true이거나 카드가 이미 뒤집혀있거나 매치된 경우 더 이상 진행하지 않음
     }
+
     const newFlippedIndexes = [...flippedIndexes, index];
     setFlippedIndexes(newFlippedIndexes);
+
     if (newFlippedIndexes.length === 2) {
+      setIsFlipping(true); // 두 카드가 뒤집힌 상태에서 다른 카드의 클릭을 막음
       const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
       if (match) {
         setMatchedIndexes([...matchedIndexes, ...newFlippedIndexes]);
       }
       setTimeout(() => {
         setFlippedIndexes([]);
+        setIsFlipping(false); // 뒤집기 애니메이션 후 isFlipping을 false로 설정하여 다른 카드를 클릭할 수 있게 함
       }, 1000);
     }
   };
@@ -80,6 +83,6 @@ const CardWrapper = styled.article`
   justify-content: center;
 
   img {
-    width: 100%; // 이미지 비율 유지
+    width: 100%;
   }
 `;
