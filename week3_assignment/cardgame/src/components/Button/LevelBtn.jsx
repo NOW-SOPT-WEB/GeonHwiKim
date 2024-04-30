@@ -1,7 +1,11 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
-const LevelBtn = ({ level, onClick }) => {
-    return <Level onClick={() => onClick(level)}>{level}</Level>;
+const LevelBtn = ({ level, onClick, selected }) => {
+    const handleOnClick = () => {
+        onClick(level);
+    };
+
+    return <Level onClick={handleOnClick} selected={selected}>{level}</Level>;
 };
 
 export default LevelBtn;
@@ -14,4 +18,6 @@ const Level = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: ${props => props.selected ? props.theme.colors.firstmint : props.theme.colors.white};
+    color: ${props => props.selected ? props.theme.colors.white : props.theme.colors.black};
 `;
