@@ -1,11 +1,8 @@
 import styled from '@emotion/styled';
 
 const LevelBtn = ({ level, onClick, selected }) => {
-    const handleOnClick = () => {
-        onClick(level);
-    };
-
-    return <Level onClick={handleOnClick} selected={selected}>{level}</Level>;
+    
+    return <Level onClick={() => onClick(level)} selected={selected}>{level}</Level>;
 };
 
 export default LevelBtn;
