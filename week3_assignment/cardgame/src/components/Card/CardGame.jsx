@@ -24,36 +24,37 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
     }
   }, [matchedIndexes, setMatchedPairsCount, numPairs]);
 
-  const handleMatchCards = (newFlippedIndexes) => {
-    if (newFlippedIndexes.length === 2) {
-      setIsFlipping(true);
-      const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
-      if (match) {
-        setMatchedIndexes([...matchedIndexes, ...newFlippedIndexes]);
-      }
-      setTimeout(() => {
-        setFlippedIndexes([]);
-        setIsFlipping(false);
-      }, 1000);
+const handleMatchCards = (newFlippedIndexes) => {
+  if (newFlippedIndexes.length === 2) {
+    setIsFlipping(true);
+    const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
+    if (match) {
+      setMatchedIndexes([...matchedIndexes, ...newFlippedIndexes]);
     }
+    setTimeout(() => {
+      setFlippedIndexes([]);
+      setIsFlipping(false);
+    }, 1000);
+  }
 }
 
 const handleCardClick = (index) => {
-    if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
-      return;
-    }
-    const newFlippedIndexes = [...flippedIndexes, index];
-    setFlippedIndexes(newFlippedIndexes);
-    handleMatchCards(newFlippedIndexes);
-};
+  if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
+  return;
+  }
+  const newFlippedIndexes = [...flippedIndexes, index];
+  setFlippedIndexes(newFlippedIndexes);
+  handleMatchCards(newFlippedIndexes);
+  }; 
 
-  const resetGame = () => {
-    const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
-    setCards(shuffleArray([...shuffledCards, ...shuffledCards]));
-    setFlippedIndexes([]);
-    setMatchedIndexes([]);
-    setShowModal(false);
-  };
+
+const resetGame = () => {
+  const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
+  setCards(shuffleArray([...shuffledCards, ...shuffledCards]));
+  setFlippedIndexes([]);
+  setMatchedIndexes([]);
+  setShowModal(false);
+};
 
   return (
     <>
@@ -61,7 +62,7 @@ const handleCardClick = (index) => {
       <GameContainer level={selectedLevel}>
         {cards.map((card, index) => (
           <CardWrapper key={index} onClick={() => handleCardClick(index)}>
-            <div className={`card ${flippedIndexes.includes(index) || matchedIndexes.includes(index) ? "flipped" : ""}`}>
+           <div className={`card ${flippedIndexes.includes(index) || matchedIndexes.includes(index) ? "flipped" : ""}`}>
               <img
                 className="card-face card-front"
                 src="/public/backimg.png" 
