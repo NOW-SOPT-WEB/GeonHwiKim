@@ -91,7 +91,7 @@ const ModalWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999; // 모달이 제일 앞에 뜰 수 있도록
+  z-index: 1; // 모달이 제일 앞에 뜰 수 있도록
 `;
 
 const GameContainer = styled.div`
