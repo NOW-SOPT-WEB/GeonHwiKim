@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import styled from "@emotion/styled";
 import { CARD_LIST } from "../../constants/cardlist";
 import Modal from "../Modal/Modal";
+import { shuffleArray } from '../../../util/arrayUtil';
+
+// CardGame 컴포넌트의 나머지 코드는 변경하지 않고 그대로 유지합니다...
 
 const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [cards, setCards] = useState([]);
@@ -9,10 +12,6 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
   const [matchedIndexes, setMatchedIndexes] = useState([]);
   const [isFlipping, setIsFlipping] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
-  const shuffleArray = (array) => {
-    return array.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value);
-  };
 
   useEffect(() => {
     resetGame();
