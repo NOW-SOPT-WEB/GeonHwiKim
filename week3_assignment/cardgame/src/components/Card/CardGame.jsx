@@ -56,7 +56,7 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
 
   return (
     <>
-      {showModal && <ModalWrapper><Modal onClose={resetGame} /></ModalWrapper>}
+      {showModal && <Modal onClose={resetGame} />}
       <GameContainer level={selectedLevel}>
         {cards.map((card, index) => (
           <CardWrapper key={index} onClick={() => handleCardClick(index)}>
@@ -81,17 +81,6 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
 
 export default CardGame;
 
-const ModalWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1; // 모달이 제일 앞에 뜰 수 있도록
-`;
 
 const GameContainer = styled.div`
   display: flex;

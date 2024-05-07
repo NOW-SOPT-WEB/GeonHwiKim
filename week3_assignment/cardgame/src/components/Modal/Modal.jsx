@@ -1,17 +1,33 @@
 import styled from "@emotion/styled";
 
+
 const Modal = ({ onClose }) => {
   return (
-    <ModalContainer>
-      <ModalContent>
-        <ModalTitle>축하합니다!</ModalTitle>
-        <CloseButton onClick={onClose}>게임으로 돌아가기</CloseButton>
-      </ModalContent>
-    </ModalContainer>
+    <ModalWrapper>
+      <ModalContainer>
+        <ModalContent>
+          <ModalTitle>축하합니다!</ModalTitle>
+          <CloseButton onClick={onClose}>게임으로 돌아가기</CloseButton>
+        </ModalContent>
+      </ModalContainer>
+    </ModalWrapper>
   );
 };
 
+
 export default Modal;
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; // 모달이 제일 앞에 뜰 수 있도록
+`;
 
 const ModalContainer = styled.div`
   position: fixed;
