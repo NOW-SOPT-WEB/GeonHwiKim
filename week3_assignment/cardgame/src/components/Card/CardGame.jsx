@@ -24,14 +24,7 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
     }
   }, [matchedIndexes, setMatchedPairsCount, numPairs]);
 
-  const handleCardClick = (index) => {
-    if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
-      return;
-    }
-
-    const newFlippedIndexes = [...flippedIndexes, index];
-    setFlippedIndexes(newFlippedIndexes);
-
+  const handleMatchCards = (newFlippedIndexes) => {
     if (newFlippedIndexes.length === 2) {
       setIsFlipping(true);
       const match = cards[newFlippedIndexes[0]].id === cards[newFlippedIndexes[1]].id;
@@ -43,7 +36,16 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
         setIsFlipping(false);
       }, 1000);
     }
-  };
+}
+
+const handleCardClick = (index) => {
+    if (isFlipping || flippedIndexes.includes(index) || matchedIndexes.includes(index)) {
+      return;
+    }
+    const newFlippedIndexes = [...flippedIndexes, index];
+    setFlippedIndexes(newFlippedIndexes);
+    handleMatchCards(newFlippedIndexes);
+};
 
   const resetGame = () => {
     const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
