@@ -48,8 +48,7 @@ const CardGame = ({ numPairs, selectedLevel, setMatchedPairsCount }) => {
 
   const resetGame = () => {
     const shuffledCards = shuffleArray(CARD_LIST).slice(0, numPairs);
-    const gameCards = [...shuffledCards, ...shuffledCards.map(card => ({ ...card }))];
-    setCards(shuffleArray(gameCards));
+    setCards(shuffleArray([...shuffledCards, ...shuffledCards]));
     setFlippedIndexes([]);
     setMatchedIndexes([]);
     setShowModal(false);
