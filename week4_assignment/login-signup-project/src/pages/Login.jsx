@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate('/Signup'); 
+  };
+
   return (
     <LoginPageContainer>
       <LoginBoxContainer>
@@ -12,12 +19,13 @@ function Login() {
             <InputBox />
           </InputContainer>
           <InputContainer>
+            <IdPwTitle>PW</IdPwTitle>
             <InputBox />
           </InputContainer>
         </InputSection>
         <BtnSection>
           <Button>로그인</Button>
-          <Button>회원가입</Button>
+          <Button onClick={handleSignUpClick}>회원가입</Button> {/* Step 3: Add onClick handler */}
         </BtnSection>
       </LoginBoxContainer>
     </LoginPageContainer>
@@ -39,7 +47,6 @@ const LoginBoxContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 50rem;
   height: 50rem;
   padding: 5rem 7rem;
@@ -60,7 +67,6 @@ const InputSection = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
   width: 100%;
 `;
 
@@ -69,7 +75,6 @@ const InputContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-
   margin-top: 3rem;
 `;
 
@@ -85,7 +90,6 @@ const InputBox = styled.input`
 
 const BtnSection = styled.section`
   display: flex;
-
   gap: 3rem;
   margin-top: 3rem;
 `;
@@ -93,8 +97,6 @@ const BtnSection = styled.section`
 const Button = styled.button`
   width: 10rem;
   height: 5rem;
-
   border-radius: 1rem;
-
   background-color: aliceblue;
 `;
