@@ -6,19 +6,18 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'plugin:prettier/recommended', // Prettier 추천 설정 추가
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'prettier'], // Prettier 플러그인 추가
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
-  },
-  "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": "off",
     "no-console": "warn",
@@ -35,5 +34,6 @@ module.exports = {
       "destructuring": "any",
       "ignoreReadBeforeAssign": false
     }],
+    'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Prettier 규칙 사용
   },
 }
