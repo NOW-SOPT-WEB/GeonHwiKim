@@ -1,7 +1,18 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 function Login() {
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  const onChangeId = (e) => {
+    setId(e.target.value);
+  };
+  const onChangePw = (e) => {
+    setPw(e.target.value);
+  }
+
+
   const navigate = useNavigate();
 
   const handleSignUpClick = () => {
@@ -16,16 +27,16 @@ function Login() {
         <InputSection>
           <InputContainer>
             <IdPwTitle>ID</IdPwTitle>
-            <InputBox />
+            <InputBox value = {id} onChange = {onChangeId} />
           </InputContainer>
           <InputContainer>
             <IdPwTitle>PW</IdPwTitle>
-            <InputBox />
+            <InputBox value = {pw} onChange = {onChangePw} />
           </InputContainer>
         </InputSection>
         <BtnSection>
           <Button>로그인</Button>
-          <Button onClick={handleSignUpClick}>회원가입</Button> {/* Step 3: Add onClick handler */}
+          <Button onClick={handleSignUpClick}>회원가입</Button>
         </BtnSection>
       </LoginBoxContainer>
     </LoginPageContainer>
