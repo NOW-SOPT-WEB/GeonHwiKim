@@ -21,6 +21,12 @@ function SignUp() {
     setPhone(e.target.value);
   }
 
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate('/');
+  }
+
 
 
   return (
@@ -47,7 +53,7 @@ function SignUp() {
         </SignupInputSection>
         <SignupBtnSection>
           <SignupButton>회원가입</SignupButton>
-          <SignupButton>뒤로가기</SignupButton>
+          <SignupButton onClick={handleBackClick}>뒤로가기</SignupButton>
         </SignupBtnSection>
       </SignupBoxContainer>
     </SignupPageContainer>
