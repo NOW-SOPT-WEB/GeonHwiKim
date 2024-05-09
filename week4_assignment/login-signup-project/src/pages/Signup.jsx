@@ -24,7 +24,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate('/');
+    navigate(-1);
   }
 
 
