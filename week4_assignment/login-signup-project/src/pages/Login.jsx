@@ -5,6 +5,8 @@ import { useState } from 'react';
 function Login() {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  const navigate = useNavigate();
+
   const onChangeId = (e) => {
     setId(e.target.value);
   };
@@ -12,11 +14,36 @@ function Login() {
     setPw(e.target.value);
   }
 
-
-  const navigate = useNavigate();
+  const handleLoginClick = async () => {
+    try {
+      const response = await fetch('http://34.64.233.12:8080/member/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          authenticationId: id,
+          password: pw,
+        }),
+      });
+  
+      const responseData = await response.json();
+  
+      if (response.ok) {
+        alert('로그인 성공!');
+        const memberId = response.headers.get('Location');
+        navigate(`/home/${memberId}`); // Home 페이지로 이동, memberId 사용
+      } else {
+        alert(`로그인 실패: ${responseData.message}`);
+      }
+    } catch (error) {
+      alert('로그인 중 에러가 발생했습니다.');
+    }
+  };
+  
 
   const handleSignUpClick = () => {
-    navigate('/signup'); 
+    navigate('/signup');
   };
 
   return (
@@ -27,15 +54,15 @@ function Login() {
         <InputSection>
           <InputContainer>
             <IdPwTitle>ID</IdPwTitle>
-            <InputBox value = {id} onChange = {onChangeId} />
+            <InputBox value={id} onChange={onChangeId} />
           </InputContainer>
           <InputContainer>
             <IdPwTitle>PW</IdPwTitle>
-            <InputBox value = {pw} onChange = {onChangePw} />
+            <InputBox type="password" value={pw} onChange={onChangePw} />
           </InputContainer>
         </InputSection>
         <BtnSection>
-          <Button>로그인</Button>
+          <Button onClick={handleLoginClick}>로그인</Button>
           <Button onClick={handleSignUpClick}>회원가입</Button>
         </BtnSection>
       </LoginBoxContainer>
