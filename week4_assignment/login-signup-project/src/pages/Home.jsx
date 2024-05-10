@@ -18,7 +18,7 @@ function Home() {
 
   return (
     <HomePageContainer>
-      <HomeImg src='/src/assets/Homeimg.jpeg' />
+      <HomeVideo src='/src/assets/video.mp4' autoPlay muted/>
       <HomeBtnSection>
         <HomePageBtn onClick={handleMyPageClick}>내 정보</HomePageBtn>
         <HomePageBtn onClick={handleJoinClick}>회원가입</HomePageBtn>
@@ -39,11 +39,15 @@ const HomePageContainer = styled.main`
   background-color: aliceblue;
 `
 
-const HomeImg = styled.img`
+const HomeVideo = styled.video.attrs({
+  autoPlay: true,
+  muted: true
+})`
   width: 60rem;
   height: 30rem;
   margin-top: 3rem;
-`
+`;
+
 
 const HomeBtnSection = styled.section`
   display: flex;
