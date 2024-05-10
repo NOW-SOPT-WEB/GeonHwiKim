@@ -9,6 +9,25 @@ function SignUp() {
   const [phone, setPhone] = useState('');
   const navigate = useNavigate();
 
+  //전화번호 양식을 정규표현식으로 자동입력
+  const handlePhoneInput = (event) => {
+    let value = event.target.value;
+    const numbers = value.replace(/[^\d]/g, '');
+    let formatted = '';
+    if (numbers.length > 0) {
+      formatted = numbers.substring(0, 3); 
+      if (numbers.length >= 4) {
+        formatted += '-' + numbers.substring(3, 7);
+      }
+      if (numbers.length >= 8) {
+        formatted += '-' + numbers.substring(7, 11);
+      }
+      setPhone(formatted);
+    } else {
+      setPhone('');
+    }
+  };
+
   const validateForm = () => {
     const idPattern = /^[a-zA-Z0-9_]+$/;
     const pwPattern = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
@@ -57,7 +76,7 @@ function SignUp() {
   const handleBackClick = () => {
     navigate(-1);
   };
-  
+
   return (
     <SignupPageContainer>
       <SignupBoxContainer>
@@ -78,7 +97,7 @@ function SignUp() {
           </SignupInputContainer>
           <SignupInputContainer>
             <IdPwNicknamePhoneTitle>전화번호</IdPwNicknamePhoneTitle>
-            <SignupInputBox value={phone} onChange={e => setPhone(e.target.value)} />
+            <SignupInputBox value={phone} onChange={handlePhoneInput} />
           </SignupInputContainer>
           <HintText>전화번호 형식은 010-****-****입니다</HintText>
         </SignupInputSection>
