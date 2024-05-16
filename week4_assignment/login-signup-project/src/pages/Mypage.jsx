@@ -5,9 +5,13 @@ import styled from 'styled-components';
 function MyPage() {
   const [userInfo, setUserInfo] = useState({ id: '', nickname: '', phone: '' });
   const [showPasswordForm, setShowPasswordForm] = useState(false);
-  const [passwords, setPasswords] = useState({ previousPassword: '', newPassword: '', confirmPassword: '' });
+  const [passwords, setPasswords] = useState({
+    previousPassword: '',
+    newPassword: '',
+    confirmPassword: '',
+  });
   const { memberId } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,10 +23,12 @@ function MyPage() {
           },
         });
         const data = await response.json();
-        console.log('Response:', response);
-        console.log('Data received:', data);
         if (response.ok) {
-          setUserInfo({ id: data.data.authenticationId, nickname: data.data.nickname, phone: data.data.phone });
+          setUserInfo({
+            id: data.data.authenticationId,
+            nickname: data.data.nickname,
+            phone: data.data.phone,
+          });
         } else {
           throw new Error(data.message || 'Failed to fetch user data');
         }
@@ -31,7 +37,7 @@ function MyPage() {
         alert('An error occurred while fetching user data. Please try again.');
       }
     };
-  
+
     fetchData();
   }, [memberId]);
 
@@ -46,10 +52,11 @@ function MyPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(passwords.previousPassword ,passwords.newPassword, passwords.confirmPassword);
-    console.log('Sending passwords:', passwords);
-    console.log('memberId:', memberId);
-    if (!passwords.previousPassword || !passwords.newPassword || !passwords.confirmPassword) {
+    if (
+      !passwords.previousPassword ||
+      !passwords.newPassword ||
+      !passwords.confirmPassword
+    ) {
       alert('모든 입력창이 채워져야합니다.');
       return;
     }
@@ -57,11 +64,13 @@ function MyPage() {
       alert('입력한 두 비밀번호가 일치하지 않습니다.');
       return;
     }
-    console.log(JSON.stringify({
-      previousPassword: passwords.previousPassword,
-      newPassword: passwords.newPassword,
-      confirmPassword: passwords.confirmPassword
-    }));
+    console.log(
+      JSON.stringify({
+        previousPassword: passwords.previousPassword,
+        newPassword: passwords.newPassword,
+        confirmPassword: passwords.confirmPassword,
+      })
+    );
 
     try {
       const response = await fetch('http://34.64.233.12:8080/member/password', {
@@ -73,7 +82,7 @@ function MyPage() {
         body: JSON.stringify({
           previousPassword: passwords.previousPassword,
           newPassword: passwords.newPassword,
-          newPasswordVerification: passwords.confirmPassword
+          newPasswordVerification: passwords.confirmPassword,
         }),
       });
       const data = await response.json();
@@ -82,11 +91,12 @@ function MyPage() {
       }
       alert('Password successfully updated');
       setShowPasswordForm(false);
-      setPasswords({ previousPassword: '', newPassword: '', confirmPassword: '' });
-    } catch (error) {
-      //console.error('Error updating password:', error);
-      console.error(error);
-    }
+      setPasswords({
+        previousPassword: '',
+        newPassword: '',
+        confirmPassword: '',
+      });
+    } catch (error) {}
   };
 
   const handleGoHome = () => {
@@ -109,15 +119,29 @@ function MyPage() {
           <Value>{userInfo.phone}</Value>
         </InfoRow>
         <PassWordContainer>
-          <PassWordButton onClick={handleTogglePasswordForm}>비밀번호 변경</PassWordButton>
+          <PassWordButton onClick={handleTogglePasswordForm}>
+            비밀번호 변경
+          </PassWordButton>
           {showPasswordForm && (
-              <form onSubmit={handleSubmit}>
-                <Input name="previousPassword" placeholder="현재 비밀번호" onChange={handleChange} />
-                <Input name="newPassword" placeholder="새로운 비밀번호" onChange={handleChange} />
-                <Input name="confirmPassword" placeholder="비밀번호 확인" onChange={handleChange} />
-                <SubButton type="submit">비밀번호 변경</SubButton>
-              </form>
-            )}
+            <form onSubmit={handleSubmit}>
+              <Input
+                name='previousPassword'
+                placeholder='현재 비밀번호'
+                onChange={handleChange}
+              />
+              <Input
+                name='newPassword'
+                placeholder='새로운 비밀번호'
+                onChange={handleChange}
+              />
+              <Input
+                name='confirmPassword'
+                placeholder='비밀번호 확인'
+                onChange={handleChange}
+              />
+              <SubButton type='submit'>비밀번호 변경</SubButton>
+            </form>
+          )}
         </PassWordContainer>
         <HomeButton onClick={handleGoHome}>Home</HomeButton>
       </MyPageBox>
@@ -144,7 +168,7 @@ const MyPageBox = styled.section`
   height: 70rem;
   padding: 5rem 16rem;
   background-color: white;
-`
+`;
 
 const InfoRow = styled.div`
   display: flex;
@@ -170,7 +194,7 @@ const PassWordContainer = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-`
+`;
 
 const PassWordButton = styled.button`
   width: 10rem;
@@ -199,7 +223,7 @@ const SubButton = styled.button`
 
 const HomeButton = styled.button`
   position: absolute;
-  top: 75rem;
+  top: 70rem;
   width: 10rem;
   height: 5rem;
   padding: 1rem 2rem;

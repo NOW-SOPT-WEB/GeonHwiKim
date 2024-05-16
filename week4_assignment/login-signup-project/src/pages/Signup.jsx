@@ -35,7 +35,8 @@ function SignUp() {
 
   const validateForm = () => {
     const idPattern = /^[a-zA-Z0-9_]+$/;
-    const pwPattern = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    const pwPattern =
+      /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     const phonePattern = /^010-\d{4}-\d{4}$/;
 
     let isValid = true;
@@ -50,27 +51,43 @@ function SignUp() {
 
     if (!pw) {
       pwInputRef.current.style.borderColor = 'red';
-      if (isValid) { 
+      if (isValid) {
+        pwInputRef.current.focus();
+      }
+      isValid = false;
+    } else if (!pwPattern.test(pw)) {
+      alert(
+        '비밀번호가 형식(최소 8글자 이상, 숫자, 문자(a-z, A-Z), 특수문자 포함)에 맞지 않습니다.'
+      );
+      pwInputRef.current.style.borderColor = 'red';
+      if (isValid) {
         pwInputRef.current.focus();
       }
       isValid = false;
     } else {
-      pwInputRef.current.style.borderColor = 'black'; 
+      pwInputRef.current.style.borderColor = 'black';
     }
 
     if (!nickname) {
       nicknameInputRef.current.style.borderColor = 'red';
-      if (isValid) { 
+      if (isValid) {
         nicknameInputRef.current.focus();
       }
       isValid = false;
     } else {
-      nicknameInputRef.current.style.borderColor = 'black'; 
+      nicknameInputRef.current.style.borderColor = 'black';
     }
 
     if (!phone) {
       phoneInputRef.current.style.borderColor = 'red';
-      if (isValid) { 
+      if (isValid) {
+        phoneInputRef.current.focus();
+      }
+      isValid = false;
+    } else if (!phonePattern.test(phone)) {
+      alert('전화번호가 형식(010-****-****)에 맞지 않습니다.');
+      phoneInputRef.current.style.borderColor = 'red';
+      if (isValid) {
         phoneInputRef.current.focus();
       }
       isValid = false;
@@ -78,13 +95,15 @@ function SignUp() {
       phoneInputRef.current.style.borderColor = 'black';
     }
 
-    if (isValid && (!idPattern.test(id) || !pwPattern.test(pw) || !phonePattern.test(phone))) {
+    if (
+      isValid &&
+      (!idPattern.test(id) || !pwPattern.test(pw) || !phonePattern.test(phone))
+    ) {
       isValid = false;
     }
 
     return isValid;
-};
-
+  };
 
   const handleSubmit = async () => {
     if (!validateForm()) return;
@@ -104,7 +123,7 @@ function SignUp() {
 
     if (response.ok) {
       alert('회원가입이 완료되었습니다.');
-      navigate('/'); // 회원가입 완료 후 로그인 페이지로 이동
+      navigate('/');
     } else {
       const error = await response.json();
       alert(error.message);
@@ -122,20 +141,40 @@ function SignUp() {
         <SignupInputSection>
           <SignupInputContainer>
             <IdPwNicknamePhoneTitle>ID</IdPwNicknamePhoneTitle>
-            <SignupInputBox ref={idInputRef} value={id} onChange={e => setId(e.target.value)} />
+            <SignupInputBox
+              ref={idInputRef}
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
           </SignupInputContainer>
           <SignupInputContainer>
             <IdPwNicknamePhoneTitle>비밀번호</IdPwNicknamePhoneTitle>
-            <SignupInputBox ref={pwInputRef} type="password" value={pw} onChange={e => setPw(e.target.value)} />
+            <SignupInputBox
+              ref={pwInputRef}
+              type='password'
+              value={pw}
+              onChange={(e) => setPw(e.target.value)}
+            />
           </SignupInputContainer>
-          <HintText>비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야 합니다</HintText>
+          <HintText>
+            비밀번호 형식은 8자이상, 숫자, 특수문자, 영어 알파벳이 포함되어야
+            합니다
+          </HintText>
           <SignupInputContainer>
             <IdPwNicknamePhoneTitle>닉네임</IdPwNicknamePhoneTitle>
-            <SignupInputBox ref={nicknameInputRef} value={nickname} onChange={e => setNickname(e.target.value)} />
+            <SignupInputBox
+              ref={nicknameInputRef}
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
+            />
           </SignupInputContainer>
           <SignupInputContainer>
             <IdPwNicknamePhoneTitle>전화번호</IdPwNicknamePhoneTitle>
-            <SignupInputBox ref={phoneInputRef} value={phone} onChange={handlePhoneInput} />
+            <SignupInputBox
+              ref={phoneInputRef}
+              value={phone}
+              onChange={handlePhoneInput}
+            />
           </SignupInputContainer>
           <HintText>전화번호 형식은 010-****-****입니다</HintText>
         </SignupInputSection>
